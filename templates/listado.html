@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block titulo %} Listado de Formularios {% endblock %}
+
+{% block contenido %}
+<div class="container">
+  <h1>FORMULARIOS REGISTRADOS</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Asunto</th>
+        <th>Mensaje</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for formulario in object_list %}
+        <tr>
+          <td>{{ formulario.nombre }}</td>
+          <td>{{ formulario.apellido }}</td>
+          <td>{{ formulario.email }}</td>
+          <td>{{ formulario.asunto }}</td>
+          <td>{{ formulario.mensaje }}</td>
+          <td>
+            <button class="btn btn-primary"><a style="color:white;" href="{% url 'principal:editar_formulario' formulario.id %}">EDITAR</a></button>
+            <button class="btn btn-danger"><a style="color:white;" href="{% url 'principal:eliminar_formulario' formulario.id %}">ELIMINAR</a></button>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock contenido %}
