@@ -10,9 +10,21 @@ class RegistrarFormulario(CreateView):
     template_name = 'index.html'
     success_url = reverse_lazy('principal:listado')
 
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['algo'] = 'Hola'
+        return context
+    """
+    def post(self,request,*args,**kwargs):
+        pass
+
+    def get(self,request,*args,**kwargs):
+        pass    
+    """
 class ListarFormulario(ListView):
     model = Formulario
     template_name = 'listado.html'
+    paginate_by = 2
 
 class ActualizarFormulario(UpdateView):
     model = Formulario

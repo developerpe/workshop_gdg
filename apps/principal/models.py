@@ -24,6 +24,7 @@ class Formulario(models.Model):
     class Meta:
         verbose_name = 'Formulario'
         verbose_name_plural = 'Formularios'
+        ordering = ['id']
 
     def __str__(self):
         return self.asunto
